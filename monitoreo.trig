@@ -1,0 +1,83 @@
+@prefix ex:      <http://example.org/monitoreo/> .
+@prefix schema:  <https://schema.org/> .
+@prefix geo:     <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+# Grafo por defecto: el conjunto de datos
+{
+    ex:conjuntoMonitoreo
+        dcterms:title        "Inventario de estaciones de monitoreo ambiental"@es ;
+        dcterms:description  "Estaciones de la red de monitoreo ambiental, organizaciones administradoras y relaciones de administración."@es .
+}
+
+# Estaciones y organizaciones
+ex:inventario {
+    ex:Estacion01
+        a                ex:EstacionMonitoreo ;
+        schema:name      "El Cajas" ;
+        ex:codigoZona    "Z01"^^xsd:string ;
+        geo:lat          "-2.7800"^^xsd:decimal ;
+        geo:long         "-79.2200"^^xsd:decimal .
+
+    ex:Estacion02
+        a                ex:EstacionMonitoreo ;
+        schema:name      "Yanuncay" ;
+        ex:codigoZona    "Z01"^^xsd:string ;
+        geo:lat          "-2.9200"^^xsd:decimal ;
+        geo:long         "-79.0500"^^xsd:decimal .
+
+    ex:Estacion03
+        a                ex:EstacionMonitoreo ;
+        schema:name      "Machángara" ;
+        ex:codigoZona    "Z02"^^xsd:string ;
+        geo:lat          "-2.8700"^^xsd:decimal ;
+        geo:long         "-78.9900"^^xsd:decimal .
+
+    ex:Estacion04
+        a                ex:EstacionMonitoreo ;
+        schema:name      "Llaviucu" ;
+        ex:codigoZona    "Z02"^^xsd:string ;
+        geo:lat          "-2.8400"^^xsd:decimal ;
+        geo:long         "-79.1500"^^xsd:decimal .
+
+    ex:Estacion05
+        a                ex:EstacionMonitoreo ;
+        schema:name      "Tarqui" ;
+        ex:codigoZona    "Z03"^^xsd:string ;
+        geo:lat          "-3.0000"^^xsd:decimal ;
+        geo:long         "-79.0200"^^xsd:decimal .
+
+    ex:Estacion06
+        a                ex:EstacionMonitoreo ;
+        schema:name      "Sayausí" ;
+        ex:codigoZona    "Z03"^^xsd:string ;
+        geo:lat          "-2.8700"^^xsd:decimal ;
+        geo:long         "-79.0700"^^xsd:decimal .
+
+    ex:OrgA
+        a            schema:Organization ;
+        schema:name  "Red Universitaria de Monitoreo" .
+
+    ex:OrgB
+        a            schema:Organization ;
+        schema:name  "Observatorio Ambiental Municipal" .
+
+    ex:OrgC
+        a            schema:Organization ;
+        schema:name  "Consorcio de Cuencas" .
+
+    ex:OrgD
+        a            schema:Organization ;
+        schema:name  "Instituto de Monitoreo del Austro" .
+}
+
+# Administradores iniciales (estación -> organización)
+ex:gestion {
+    ex:Estacion01 ex:administradaPor ex:OrgA .
+    ex:Estacion02 ex:administradaPor ex:OrgA .
+    ex:Estacion03 ex:administradaPor ex:OrgB .
+    ex:Estacion04 ex:administradaPor ex:OrgB .
+    ex:Estacion05 ex:administradaPor ex:OrgC .
+    ex:Estacion06 ex:administradaPor ex:OrgA .
+}
